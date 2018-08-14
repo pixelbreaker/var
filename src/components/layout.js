@@ -14,6 +14,12 @@ const Layout = ({ children, data }) => (
           siteMetadata {
             title
           }
+        },
+        contentfulHeaderLinks(title: { eq: "header" }){
+          links {
+            title,
+            slug
+          }
         }
       }
     `}
@@ -28,7 +34,7 @@ const Layout = ({ children, data }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} links={data.contentfulHeaderLinks.links} />
         <div
           style={{
             margin: '0 auto',
