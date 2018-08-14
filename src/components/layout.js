@@ -33,6 +33,7 @@ const Layout = ({ children, data }) => (
           ]}
         >
           <html lang="en" />
+          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" />
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} links={data.contentfulHeaderLinks.links} />
         <div

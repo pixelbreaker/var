@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  background-color: #ddd;
   margin: 0 0 20px;
 `
 
@@ -20,14 +19,21 @@ const Contents = styled.div`
 const Brand = styled.h1`
   display: block;
   flex: 2 1 auto;
+  font-weight: 300;
+  letter-spacing: 0.1em;
   margin: 0;
   text-decoration: none;
   text-transform: uppercase;
 `
 
 const BrandLink = styled(Link)`
-  color: white;
+  color: black;
   text-decoration: none;
+  transition: color 0.1s ease;
+
+  &:hover {
+    color: #333;
+  }
 `
 
 const Nav = styled.div`
@@ -36,9 +42,10 @@ const Nav = styled.div`
 `
 
 const NavLink = styled(Link)`
-  margin-right: 10px;
   color: black;
+  margin-right: 10px;
   text-decoration: none;
+  text-transform: uppercase;
 
   &:hover {
     text-decoration: underline;
