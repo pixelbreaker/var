@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { MEDIA_XLARGE } from '../constants'
 
 import Header from './header'
 import './layout.css'
@@ -39,7 +40,7 @@ const Layout = ({ children, data }) => (
         <div
           style={{
             margin: '0 auto',
-            maxWidth: 960,
+            maxWidth: MEDIA_XLARGE,
             padding: '0px 1.0875rem 1.45rem',
             paddingTop: 0,
           }}

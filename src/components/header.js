@@ -1,5 +1,6 @@
-import React from 'react'
 import { Link } from 'gatsby'
+import { MEDIA_XLARGE } from '../constants'
+import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -12,7 +13,7 @@ const Contents = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: ${MEDIA_XLARGE}px;
   padding: 20px;
 `
 

@@ -1,12 +1,14 @@
+import { graphql } from 'gatsby'
+import { mqMedium, mqLarge } from '../constants'
+import Layout from '../components/layout'
 import React from 'react'
-// import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import Layout from '../components/layout'
 
 const Tiles = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 `
 
 const Tile = styled.a`
@@ -14,6 +16,14 @@ const Tile = styled.a`
   padding-right: 10px;
   text-decoration: none;
   color: #999;
+
+  ${mqMedium} {
+    flex-basis: 33.3%;
+  }
+
+  ${mqLarge} {
+    flex-basis: 25%;
+  }
 `
 
 const TileImage = styled.div`
@@ -43,8 +53,6 @@ const TileLabel = styled.div`
   margin: 10px 0;
 `
 
-
-
 const IndexPage = ({children, data}) => {
   return (
     <Layout>
@@ -66,7 +74,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allContentfulPage(filter:{ listed: { eq:true }}) {
+    allContentfulPage(filter:{ unlisted: { ne:true }}, sort:{ fields: [presentedAt], order: DESC }) {
       edges {
         node {
           id,
