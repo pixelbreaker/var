@@ -1,6 +1,7 @@
+import { graphql } from 'gatsby'
 import * as PropTypes from "prop-types"
-import React from "react"
 import Layout from '../components/layout'
+import React from "react"
 
 const propTypes = {
   data: PropTypes.object.isRequired,

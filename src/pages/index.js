@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import { mqMedium, mqLarge } from '../constants'
+import { mqMedium, mqLarge, mqXLarge } from '../constants'
 import Layout from '../components/layout'
 import React from 'react'
 import styled from 'styled-components'
@@ -12,16 +12,20 @@ const Tiles = styled.div`
 `
 
 const Tile = styled.a`
-  flex: 0 0 50%;
+  flex: 0 0 100%;
   padding-right: 10px;
   text-decoration: none;
   color: #999;
 
   ${mqMedium} {
-    flex-basis: 33.3%;
+    flex-basis: 50%;
   }
 
   ${mqLarge} {
+    flex-basis: 33.3%;
+  }
+
+  ${mqXLarge} {
     flex-basis: 25%;
   }
 `
