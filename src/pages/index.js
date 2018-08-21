@@ -9,11 +9,12 @@ const Tiles = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin: -20px;
 `
 
 const Tile = styled.a`
   flex: 0 0 100%;
-  padding-right: 10px;
+  padding: 20px;
   text-decoration: none;
   color: #999;
 
@@ -61,12 +62,12 @@ const IndexPage = ({children, data}) => {
   return (
     <Layout>
       <Tiles>
-        {data.allContentfulPage.edges.map((page, index) => (
-          <Tile href={page.node.slug} key={index}>
+        {data.allContentfulPage.edges.map(({ node }) => (
+          <Tile href={node.slug} key={node.id}>
             <TileImage>
-              <TileImg style={{ backgroundImage: `url(${page.node.coverImage.file.url})`}} />
+              <TileImg style={{ backgroundImage: `url(${node.coverImage.file.url})`}} />
             </TileImage>
-            <TileLabel>{page.node.title}</TileLabel>
+            <TileLabel>{node.title}</TileLabel>
           </Tile>
         ))}
       </Tiles>
@@ -78,7 +79,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allContentfulPage(filter:{ unlisted: { ne:true }}, sort:{ fields: [presentedAt], order: DESC }) {
+    allContentfulPage(filter:{ unlisted: { ne: true }}, sort:{ fields: [ presentedAt ], order: DESC }) {
       edges {
         node {
           id,
@@ -87,8 +88,6 @@ export const pageQuery = graphql`
           coverImage {
             file {
               url
-              fileName
-              contentType
             }
           }
         }
