@@ -1,23 +1,23 @@
 import { graphql } from 'gatsby'
-import * as PropTypes from "prop-types"
+import * as PropTypes from 'prop-types'
 import Layout from '../components/layout'
-import React from "react"
+import React from 'react'
+import { pageComponents } from '../constants.js'
 
 const propTypes = {
   data: PropTypes.object.isRequired,
 }
 
 const PageTemplate = ({ children, data }) => {
-  // const { title } = data.contentfulPage
+  const { title, components } = data.contentfulPage
   return (
     <Layout>
-      <div
-        style={{
-          display: `flex`,
-          alignItems: `center`,
-        }}
-      >
-        <h4>{data.contentfulPage.title}</h4>
+      <div>
+        <h4>{title}</h4>
+        {components.map((component, index) => {
+          const CurrentComponent = pageComponents[component.__typename]
+          return <CurrentComponent {...component} key={index} />
+        })}
       </div>
     </Layout>
   )
@@ -30,9 +30,13 @@ export default PageTemplate
 export const pageQuery = graphql`
   query PageQuery($id: String!) {
     contentfulPage(id: { eq: $id }) {
-      id,
-      slug,
+      id
+      slug
       title
+      components {
+        __typename
+        ...ContentfulPageImages
+      }
     }
   }
 `

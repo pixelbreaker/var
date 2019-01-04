@@ -1,9 +1,8 @@
 import { graphql } from 'gatsby'
-import { mqMedium, mqLarge, mqXLarge } from '../constants'
-import Layout from '../components/layout'
+import { mqLarge, mqMedium, mqXLarge } from '../constants'
 import React from 'react'
 import styled from 'styled-components'
-
+import Layout from '../components/layout'
 
 const Tiles = styled.div`
   display: flex;
@@ -58,14 +57,16 @@ const TileLabel = styled.div`
   margin: 10px 0;
 `
 
-const IndexPage = ({children, data}) => {
+const IndexPage = ({ children, data }) => {
   return (
     <Layout>
       <Tiles>
         {data.allContentfulPage.edges.map(({ node }) => (
           <Tile href={node.slug} key={node.id}>
             <TileImage>
-              <TileImg style={{ backgroundImage: `url(${node.coverImage.file.url})`}} />
+              <TileImg
+                style={{ backgroundImage: `url(${node.coverImage.file.url})` }}
+              />
             </TileImage>
             <TileLabel>{node.title}</TileLabel>
           </Tile>
@@ -79,12 +80,15 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allContentfulPage(filter:{ unlisted: { ne: true }}, sort:{ fields: [ presentedAt ], order: DESC }) {
+    allContentfulPage(
+      filter: { unlisted: { ne: true } }
+      sort: { fields: [presentedAt], order: DESC }
+    ) {
       edges {
         node {
-          id,
-          slug,
-          title,
+          id
+          slug
+          title
           coverImage {
             file {
               url
