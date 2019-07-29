@@ -1,6 +1,7 @@
 import React from 'react'
 import { mqLarge, mqMedium } from '../constants'
 import styled from 'styled-components'
+import AnchorRollover from './AnchorRollover'
 
 const FooterContainer = styled.div`
   display: grid;
@@ -10,16 +11,24 @@ const FooterContainer = styled.div`
   padding-top: 2rem;
   border-top: #ccc 1px solid;
 
+  ${mqMedium} {
+    grid-template: auto / repeat(2, 1fr);
+  }
+
   ${mqLarge} {
     grid-template: auto / repeat(3, 1fr);
   }
 
   a {
     color: #444;
-    text-decoration: none;
+    text-decoration: underline;
 
-    &:hover {
-      text-decoration: underline;
+    ${mqLarge} {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 `
@@ -39,12 +48,22 @@ const FooterColumn = styled.div`
     font-size: 16px;
     font-weight: bold;
   }
+
+  &.col3 {
+    ${mqMedium} {
+      grid-column-start: 2;
+    }
+
+    ${mqLarge} {
+      grid-column-start: unset;
+    }
+  }
 `
 
 const Footer = () => (
   <FooterContainer>
     <FooterColumn className="col1">VAR</FooterColumn>
-    <FooterColumn>
+    <FooterColumn className="col2">
       <strong>LONDON</strong>
       <br />
       <p>
@@ -57,7 +76,7 @@ const Footer = () => (
         KT2 5RR
       </p>
       <p>
-        <a href="mailto:info@var.studio">info@var.studio</a>
+        <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
         <br />
         <Tel href="tel:+440000000000">+ 44 0000 000 000</Tel>
       </p>
@@ -72,21 +91,21 @@ const Footer = () => (
         North Point
       </p>
       <p>
-        <a href="mailto:info@var.studio">info@var.studio</a>
+        <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
         <br />
         <Tel href="tel:+85228381303">+852 2838 1303</Tel>
       </p>
     </FooterColumn>
-    <FooterColumn>
-      <a href="#">Facebook</a>
+    <FooterColumn className="col3">
+      <AnchorRollover href="#" target="_blank" label="Facebook" />
       <br />
-      <a href="#">Instagram</a>
+      <AnchorRollover href="#" target="_blank" label="Instagram" />
       <br />
-      <a href="#">Linkedin</a>
+      <AnchorRollover href="#" target="_blank" label="Linkedin" />
       <br />
-      <a href="#">Behance</a>
+      <AnchorRollover href="#" target="_blank" label="Behance" />
       <br />
-      <a href="#">Pinterest</a>
+      <AnchorRollover href="#" target="_blank" label="Pinterest" />
       <br />
     </FooterColumn>
   </FooterContainer>
