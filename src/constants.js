@@ -10,4 +10,6 @@ export const mqXLarge = `@media (min-width: ${MEDIA_XLARGE}px)`
 
 export const pageComponents = {
   ContentfulPageImages: PageImages,
+  ContentfulPageTextColumns: PageImages,
+  ContentfulPageVideo: PageImages,
 }

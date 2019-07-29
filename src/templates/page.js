@@ -8,7 +8,7 @@ const propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-const PageTemplate = ({ children, data }) => {
+const PageTemplate = ({ data }) => {
   const { title, components } = data.contentfulPage
   return (
     <Layout>
