@@ -3,9 +3,17 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import { MEDIA_XLARGE } from '../constants'
-
+import styled from 'styled-components'
 import Header from './header'
+import Footer from './footer'
 import './layout.css'
+
+const PageRow = styled.div`
+  margin: 0 auto;
+  max-width: ${MEDIA_XLARGE}px;
+  padding-top: 0;
+  padding: 0px 1.0875rem 1.45rem;
+`
 
 const Layout = ({ children, data }) => (
   <StaticQuery
@@ -15,10 +23,10 @@ const Layout = ({ children, data }) => (
           siteMetadata {
             title
           }
-        },
-        contentfulHeaderLinks(title: { eq: "header" }){
+        }
+        contentfulHeaderLinks(title: { eq: "header" }) {
           links {
-            title,
+            title
             slug
           }
         }
@@ -34,19 +42,19 @@ const Layout = ({ children, data }) => (
           ]}
         >
           <html lang="en" />
-          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"
+            rel="stylesheet"
+          />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} links={data.contentfulHeaderLinks.links} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: MEDIA_XLARGE,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          links={data.contentfulHeaderLinks.links}
+        />
+        <PageRow>{children}</PageRow>
+        <PageRow>
+          <Footer />
+        </PageRow>
       </>
     )}
   />

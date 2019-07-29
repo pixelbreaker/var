@@ -3,9 +3,10 @@ import { graphql } from 'gatsby'
 
 const PageImages = ({ images }) => (
   <div>
-    {images.map((image, index) => (
-      <img src={image.file.url} key={index} alt={image.title} />
-    ))}
+    {images &&
+      images.map((image, index) => (
+        <img src={image.file.url} key={index} alt={image.title} />
+      ))}
   </div>
 )
 

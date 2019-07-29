@@ -1,33 +1,26 @@
 import { graphql } from 'gatsby'
-import { mqLarge, mqMedium, mqXLarge } from '../constants'
+import { mqLarge, mqMedium } from '../constants'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 
 const Tiles = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: -20px;
-`
-
-const Tile = styled.a`
-  flex: 0 0 100%;
-  padding: 20px;
-  text-decoration: none;
-  color: #999;
+  display: grid;
+  grid-template: auto / auto;
+  grid-gap: 20px;
 
   ${mqMedium} {
-    flex-basis: 50%;
+    grid-template: auto / repeat(2, 1fr);
   }
 
   ${mqLarge} {
-    flex-basis: 33.3%;
+    grid-template: auto / repeat(3, 1fr);
   }
+`
 
-  ${mqXLarge} {
-    flex-basis: 25%;
-  }
+const Tile = styled.a`
+  text-decoration: none;
+  color: #999;
 `
 
 const TileImage = styled.div`
@@ -55,6 +48,11 @@ const TileLabel = styled.div`
   font-size: 16px;
   font-weight: 300;
   margin: 10px 0;
+  transition: color 0.3s ease;
+
+  ${Tile}:hover & {
+    color: #444;
+  }
 `
 
 const IndexPage = ({ children, data }) => {

@@ -14,10 +14,11 @@ const PageTemplate = ({ children, data }) => {
     <Layout>
       <div>
         <h4>{title}</h4>
-        {components.map((component, index) => {
-          const CurrentComponent = pageComponents[component.__typename]
-          return <CurrentComponent {...component} key={index} />
-        })}
+        {components &&
+          components.map((component, index) => {
+            const CurrentComponent = pageComponents[component.__typename]
+            return <CurrentComponent {...component} key={index} />
+          })}
       </div>
     </Layout>
   )
