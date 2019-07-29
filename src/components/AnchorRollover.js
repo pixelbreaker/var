@@ -9,6 +9,7 @@ const Container = styled.a`
     overflow: hidden;
     position: relative;
     text-decoration: none;
+    transform: translateX(-3px);
 
     &:hover {
       text-decoration: none !important;
