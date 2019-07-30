@@ -2,6 +2,7 @@ import { Link } from 'gatsby'
 import { MEDIA_XLARGE } from '../constants'
 import React from 'react'
 import styled from 'styled-components'
+import AnchorRollover from './AnchorRollover'
 
 const Container = styled.div`
   margin: 0 0 20px;
@@ -45,25 +46,23 @@ const Nav = styled.div`
 const NavLink = styled(Link)`
   color: black;
   margin-right: 10px;
-  text-decoration: none;
   text-transform: uppercase;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `
 
 const Header = ({ siteTitle, links }) => (
   <Container>
     <Contents>
       <Brand>
-        <BrandLink to="/">
-          {siteTitle}
-        </BrandLink>
+        <BrandLink to="/">{siteTitle}</BrandLink>
       </Brand>
       <Nav>
         {links.map((link, index) => (
-          <NavLink to={link.slug} key={index}>{link.title}</NavLink>
+          <AnchorRollover
+            as={NavLink}
+            to={link.slug}
+            key={index}
+            label={link.title}
+          />
         ))}
       </Nav>
     </Contents>

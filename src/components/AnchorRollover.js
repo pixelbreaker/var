@@ -43,8 +43,8 @@ const Mover = styled.div`
   }
 `
 
-const AnchorRollover = ({ label, href, target }) => (
-  <Container href={href} target={target}>
+const AnchorRollover = ({ label, as, ...props }) => (
+  <Container as={as} {...props}>
     <Mover data-label={label}>{label}</Mover>
   </Container>
 )
