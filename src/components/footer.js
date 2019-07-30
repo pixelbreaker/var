@@ -62,7 +62,13 @@ const FooterColumn = styled.div`
 
 const Footer = () => (
   <FooterContainer>
-    <FooterColumn className="col1">VAR</FooterColumn>
+    <FooterColumn className="col1">
+      <AnchorRollover
+        href="https://var.studio"
+        label="VAR"
+        style={{ textDecoration: 'none' }}
+      />
+    </FooterColumn>
     <FooterColumn className="col2">
       <strong>LONDON</strong>
       <br />

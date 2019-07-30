@@ -29,17 +29,20 @@ const TileImage = styled.div`
   overflow: hidden;
 `
 
-const TileImg = styled.div`
-  background-size: cover;
+const TileImg = styled.img`
   bottom: 0;
+  height: 100%;
   left: 0;
+  object-fit: cover;
   position: absolute;
   right: 0;
   top: 0;
   transition: transform 0.5s ease;
+  transform: translate3d(0, 0, 0) scale(1.05);
+  width: 100%;
 
   ${Tile}:hover & {
-    transform: scale(1.1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 `
 
@@ -62,9 +65,7 @@ const IndexPage = ({ children, data }) => {
         {data.allContentfulPage.edges.map(({ node }) => (
           <Tile href={node.slug} key={node.id}>
             <TileImage>
-              <TileImg
-                style={{ backgroundImage: `url(${node.coverImage.file.url})` }}
-              />
+              <TileImg srcSet={node.coverImage.fixed.srcSet} />
             </TileImage>
             <TileLabel>{node.title}</TileLabel>
           </Tile>
@@ -88,8 +89,8 @@ export const pageQuery = graphql`
           slug
           title
           coverImage {
-            file {
-              url
+            fixed(quality: 70) {
+              srcSet
             }
           }
         }
