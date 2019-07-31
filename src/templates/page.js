@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import React from 'react'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 const HeaderImages = styled.div`
   display: grid;
@@ -27,11 +28,11 @@ const HeaderImage = styled.div`
   }
 `
 
-const HeaderImg = styled.img`
+const HeaderImg = styled(Img)`
   height: 100%;
   left: 0;
   object-fit: cover;
-  position: absolute;
+  position: absolute !important;
   top: 0;
   width: 100%;
 `
@@ -67,7 +68,12 @@ const PageTemplate = ({ data }) => {
           {headerImages &&
             headerImages.map(props => (
               <HeaderImage>
-                <HeaderImg {...props.fluid} />
+                <HeaderImg
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  sizes={props.sizes}
+                />
+                {/* <HeaderImg {...props.fluid} /> */}
               </HeaderImage>
             ))}
         </HeaderImages>
@@ -110,9 +116,12 @@ export const pageQuery = graphql`
         }
       }
       headerImages {
-        fluid(maxWidth: 1800, quality: 70) {
-          ...GatsbyContentfulFluid
+        sizes(maxWidth: 1800, quality: 75) {
+          ...GatsbyContentfulSizes_tracedSVG
         }
+        # fluid(maxWidth: 1800, quality: 70) {
+        #   ...GatsbyContentfulFluid
+        # }
       }
     }
   }
