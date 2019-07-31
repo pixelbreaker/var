@@ -16,8 +16,6 @@ const HeaderImages = styled.div`
 `
 
 const HeaderImage = styled.div`
-  height: 0;
-  padding-bottom: 100%;
   position: relative;
 
   ${mqLarge} {
@@ -29,11 +27,7 @@ const HeaderImage = styled.div`
 `
 
 const HeaderImg = styled(Img)`
-  height: 100%;
-  left: 0;
-  object-fit: cover;
-  position: absolute !important;
-  top: 0;
+  height: auto;
   width: 100%;
 `
 
@@ -68,12 +62,7 @@ const PageTemplate = ({ data }) => {
           {headerImages &&
             headerImages.map(props => (
               <HeaderImage>
-                <HeaderImg
-                  objectFit="cover"
-                  objectPosition="50% 50%"
-                  sizes={props.sizes}
-                />
-                {/* <HeaderImg {...props.fluid} /> */}
+                <HeaderImg sizes={props.sizes} />
               </HeaderImage>
             ))}
         </HeaderImages>

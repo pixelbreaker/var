@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import AnchorRollover from './AnchorRollover'
 
 const Container = styled.div`
-  margin: 0 0 20px;
+  margin: 20px 0;
 `
 
 const Contents = styled.div`
@@ -25,6 +25,7 @@ const Brand = styled(Link)`
 
 const Logo = styled.img`
   margin-bottom: 0 !important;
+  width: 110px;
 `
 
 const Nav = styled.div`
