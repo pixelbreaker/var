@@ -1,13 +1,14 @@
 import { graphql } from 'gatsby'
-import { mqLarge, mqMedium } from '../constants'
+import { mqLarge, mqMedium, GRID_GUTTER } from '../constants'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
+import Img from 'gatsby-image'
 
 const Tiles = styled.div`
   display: grid;
   grid-template: auto / auto;
-  grid-gap: 20px;
+  grid-gap: ${GRID_GUTTER}px;
 
   ${mqMedium} {
     grid-template: auto / repeat(2, 1fr);
@@ -29,20 +30,20 @@ const TileImage = styled.div`
   overflow: hidden;
 `
 
-const TileImg = styled.img`
+const TileImg = styled(Img)`
   bottom: 0;
   height: 100%;
   left: 0;
-  object-fit: cover;
-  position: absolute;
+  /* object-fit: cover; */
+  position: absolute !important;
   right: 0;
   top: 0;
   transition: transform 0.5s ease;
-  transform: translate3d(0, 0, 0) scale(1.05);
+  transform: translateZ(0) scale(1.05);
   width: 100%;
 
   ${Tile}:hover & {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translateZ(0) scale(1);
   }
 `
 
@@ -65,7 +66,13 @@ const IndexPage = ({ children, data }) => {
         {data.allContentfulPage.edges.map(({ node }) => (
           <Tile href={node.slug} key={node.id}>
             <TileImage>
-              <TileImg srcSet={node.coverImage.fixed.srcSet} />
+              <TileImg
+                objectFit="cover"
+                objectPosition="50% 50%"
+                title={node.title}
+                alt={node.title}
+                sizes={node.coverImage.sizes}
+              />
             </TileImage>
             <TileLabel>{node.title}</TileLabel>
           </Tile>
@@ -89,8 +96,8 @@ export const pageQuery = graphql`
           slug
           title
           coverImage {
-            fixed(quality: 70) {
-              srcSet
+            sizes(quality: 70) {
+              ...GatsbyContentfulSizes_tracedSVG
             }
           }
         }

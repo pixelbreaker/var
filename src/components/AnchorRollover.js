@@ -17,7 +17,7 @@ const Container = styled.a`
   }
 `
 
-const Mover = styled.div`
+const Mover = styled.span`
   display: inline;
 
   ${mqMedium} {

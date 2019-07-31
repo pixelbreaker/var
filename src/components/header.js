@@ -59,7 +59,7 @@ const Header = ({ siteTitle, links }) => (
         {links.map((link, index) => (
           <AnchorRollover
             as={NavLink}
-            to={link.slug}
+            to={`/${link.slug}`}
             key={index}
             label={link.title}
           />
