@@ -110,7 +110,7 @@ export const pageQuery = graphql`
         }
       }
       headerImages {
-        fluid(quality: 70) {
+        fluid(maxWidth: 1800, quality: 70) {
           ...GatsbyContentfulFluid
         }
       }
