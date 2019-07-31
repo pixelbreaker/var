@@ -18,24 +18,13 @@ const Contents = styled.div`
   padding: 20px;
 `
 
-const Brand = styled.h1`
+const Brand = styled(Link)`
   display: block;
   flex: 2 1 auto;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  margin: 0;
-  text-decoration: none;
-  text-transform: uppercase;
 `
 
-const BrandLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-  transition: color 0.1s ease;
-
-  &:hover {
-    color: #333;
-  }
+const Logo = styled.img`
+  margin-bottom: 0 !important;
 `
 
 const Nav = styled.div`
@@ -52,8 +41,8 @@ const NavLink = styled(Link)`
 const Header = ({ siteTitle, links }) => (
   <Container>
     <Contents>
-      <Brand>
-        <BrandLink to="/">{siteTitle}</BrandLink>
+      <Brand to="/">
+        <Logo src="/images/var_logo.svg" alt="VAR logo" />
       </Brand>
       <Nav>
         {links.map((link, index) => (
