@@ -38,14 +38,14 @@ const TileImg = styled(Img)`
   position: absolute !important;
   right: 0;
   top: 0;
-  transition: filter 0.5s ease;
-  /* transform: translateZ(0) scale(1.05); */
+  transition: filter 0.5s ease, transform 0.5s ease;
+  transform: translateZ(0) scale(1.025);
   filter: grayscale(1);
   width: 100%;
 
   ${Tile}:hover & {
     filter: grayscale(0);
-    /* transform: translateZ(0) scale(1); */
+    transform: translateZ(0) scale(1);
   }
 `
 
