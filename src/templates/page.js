@@ -46,6 +46,12 @@ const IntroTextColumn = styled.div`
   &:first-child {
     font-weight: bold;
   }
+
+  & blockquote {
+    background-color: #fafafa;
+    margin: 0 0 10px;
+    padding: 10px;
+  }
 `
 
 const propTypes = {

@@ -103,11 +103,23 @@ const Footer = () => (
       </p>
     </FooterColumn>
     <FooterColumn className="col3">
-      <AnchorRollover href="#" target="_blank" label="Facebook" />
+      <AnchorRollover
+        href="https://www.facebook.com/varltd"
+        target="_blank"
+        label="Facebook"
+      />
       <br />
-      <AnchorRollover href="#" target="_blank" label="Instagram" />
+      <AnchorRollover
+        href="https://www.instagram.com/varltd/"
+        target="_blank"
+        label="Instagram"
+      />
       <br />
-      <AnchorRollover href="#" target="_blank" label="Linkedin" />
+      <AnchorRollover
+        href="https://www.linkedin.com/company/var-limited/"
+        target="_blank"
+        label="Linkedin"
+      />
       <br />
       <AnchorRollover href="#" target="_blank" label="Behance" />
       <br />

@@ -25,7 +25,7 @@ const Brand = styled(Link)`
 
 const Logo = styled.img`
   margin-bottom: 0 !important;
-  width: 110px;
+  width: 80px;
 `
 
 const Nav = styled.div`
