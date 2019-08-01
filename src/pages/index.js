@@ -26,27 +26,25 @@ const Tile = styled(Link)`
 `
 
 const TileImage = styled.div`
+  overflow: hidden;
   padding-bottom: 100%;
   position: relative;
-  overflow: hidden;
 `
 
 const TileImg = styled(Img)`
   bottom: 0;
+  filter: grayscale(1) contrast(1.6);
   height: 100%;
   left: 0;
-  /* object-fit: cover; */
   position: absolute !important;
   right: 0;
   top: 0;
-  transition: filter 0.3s ease;
   transform: translateZ(0);
-  filter: grayscale(1);
+  transition: filter 0.3s ease;
   width: 100%;
 
   ${Tile}:hover & {
-    filter: grayscale(0);
-    /* transform: translateZ(0) scale(1); */
+    filter: grayscale(0) contrast(1);
   }
 `
 
@@ -72,7 +70,6 @@ const TileLabel = styled.div`
     overflow: hidden;
     position: relative;
     text-decoration: none;
-    /* transform: translateX(-3px); */
 
     &:hover {
       text-decoration: none !important;
@@ -93,14 +90,14 @@ const Mover = styled.span`
 
     &:after {
       background-color: #444;
-      display: block;
       color: #fff;
       content: attr(data-label);
+      display: block;
       left: 0;
       padding: 1px 3px;
       position: absolute;
-      top: 100%;
       right: 0;
+      top: 100%;
     }
 
     ${Tile}:hover & {

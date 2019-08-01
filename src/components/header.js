@@ -20,6 +20,10 @@ const Contents = styled.div`
 
 const Brand = styled(Link)`
   display: block;
+  flex: 0 0 auto;
+`
+
+const Filler = styled.div`
   flex: 2 1 auto;
 `
 
@@ -45,6 +49,7 @@ const Header = ({ siteTitle, links }) => (
       <Brand to="/">
         <Logo src="/images/var_logo.svg" alt="VAR logo" />
       </Brand>
+      <Filler />
       <Nav>
         {links.map((link, index) => (
           <AnchorRollover
