@@ -38,7 +38,7 @@ const TileImg = styled(Img)`
   position: absolute !important;
   right: 0;
   top: 0;
-  transition: filter 0.5s ease;
+  transition: filter 0.3s ease;
   /* transform: translateZ(0) scale(1.05); */
   filter: grayscale(1);
   width: 100%;
@@ -54,10 +54,12 @@ const TileLabel = styled.div`
   font-size: 16px;
   font-weight: 300;
   margin: 10px 0;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  translate: translate3d(0, 0, 0);
 
   ${Tile}:hover & {
     color: #444;
+    transform: translate3d(5px, 0, 0);
   }
 `
 
