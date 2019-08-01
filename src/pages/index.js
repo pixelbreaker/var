@@ -13,6 +13,7 @@ const Tiles = styled.div`
 
   ${mqMedium} {
     grid-template: auto / repeat(2, 1fr);
+    grid-row-gap: ${GRID_GUTTER * 3}px;
   }
 
   ${mqLarge} {
@@ -33,18 +34,21 @@ const TileImage = styled.div`
 
 const TileImg = styled(Img)`
   bottom: 0;
-  filter: grayscale(1) contrast(1.6);
   height: 100%;
   left: 0;
   position: absolute !important;
   right: 0;
   top: 0;
-  transform: translateZ(0);
-  transition: filter 0.3s ease;
   width: 100%;
 
-  ${Tile}:hover & {
-    filter: grayscale(0) contrast(1);
+  ${mqLarge} {
+    filter: grayscale(1) contrast(1.6);
+    transform: translateZ(0);
+    transition: filter 0.3s ease;
+
+    ${Tile}:hover & {
+      filter: grayscale(0) contrast(1);
+    }
   }
 `
 
@@ -106,11 +110,11 @@ const Mover = styled.span`
   }
 `
 
-const IndexPage = ({ children, data }) => {
+const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Tiles>
-        {data.allContentfulPage.edges.map(({ node }) => (
+        {data.pages.edges.map(({ node }) => (
           <Tile to={`/${node.slug}`} key={node.id}>
             <TileImage>
               <TileImg
@@ -135,7 +139,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allContentfulPage(
+    pages: allContentfulPage(
       filter: { unlisted: { ne: true } }
       sort: { fields: [presentedAt], order: DESC }
     ) {

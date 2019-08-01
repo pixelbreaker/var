@@ -43,10 +43,6 @@ const IntroTextContainer = styled.div`
 `
 
 const IntroTextColumn = styled.div`
-  &:first-child {
-    font-weight: bold;
-  }
-
   & blockquote {
     background-color: #fafafa;
     margin: 0 0 10px;
@@ -54,12 +50,18 @@ const IntroTextColumn = styled.div`
   }
 `
 
+const Title = styled.div`
+  font-weight: bold;
+`
+
+const Subtitle = styled.div``
+
 const propTypes = {
   data: PropTypes.object.isRequired,
 }
 
 const PageTemplate = ({ data }) => {
-  const { headerImages, title, bodyCopy, components } = data.contentfulPage
+  const { headerImages, title, subtitle, bodyCopy, components } = data.page
 
   return (
     <Layout>
@@ -73,7 +75,10 @@ const PageTemplate = ({ data }) => {
             ))}
         </HeaderImages>
         <IntroTextContainer>
-          <IntroTextColumn>{title}</IntroTextColumn>
+          <IntroTextColumn>
+            <Title>{title}</Title>
+            {subtitle && <Subtitle>{subtitle}</Subtitle>}
+          </IntroTextColumn>
           {bodyCopy && (
             <IntroTextColumn
               dangerouslySetInnerHTML={{
@@ -98,10 +103,11 @@ export default PageTemplate
 
 export const pageQuery = graphql`
   query PageQuery($id: String!) {
-    contentfulPage(id: { eq: $id }) {
+    page: contentfulPage(id: { eq: $id }) {
       id
       slug
       title
+      subtitle
       components {
         __typename
       }
@@ -114,9 +120,6 @@ export const pageQuery = graphql`
         sizes(maxWidth: 1800, quality: 75) {
           ...GatsbyContentfulSizes_tracedSVG
         }
-        # fluid(maxWidth: 1800, quality: 70) {
-        #   ...GatsbyContentfulFluid
-        # }
       }
     }
   }
