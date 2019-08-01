@@ -101,11 +101,11 @@ const Mover = styled.span`
       padding: 1px 3px;
       position: absolute;
       right: 0;
-      top: 100%;
+      top: -100%;
     }
 
     ${Tile}:hover & {
-      transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, 100%, 0);
     }
   }
 `
