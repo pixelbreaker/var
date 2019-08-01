@@ -40,11 +40,11 @@ const TileImg = styled(Img)`
   top: 0;
   transition: filter 0.5s ease;
   /* transform: translateZ(0) scale(1.05); */
-  filter: grayscale(1) contrast(2) blur(0.25px);
+  filter: grayscale(1);
   width: 100%;
 
   ${Tile}:hover & {
-    filter: grayscale(0) contrast(1) blur(0);
+    filter: grayscale(0);
     /* transform: translateZ(0) scale(1); */
   }
 `
