@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 
 const Tiles = styled.div`
   display: grid;
@@ -19,7 +20,7 @@ const Tiles = styled.div`
   }
 `
 
-const Tile = styled.a`
+const Tile = styled(Link)`
   text-decoration: none;
   color: #999;
 `
@@ -113,7 +114,7 @@ const IndexPage = ({ children, data }) => {
     <Layout>
       <Tiles>
         {data.allContentfulPage.edges.map(({ node }) => (
-          <Tile href={node.slug} key={node.id}>
+          <Tile to={`/${node.slug}`} key={node.id}>
             <TileImage>
               <TileImg
                 objectFit="cover"
