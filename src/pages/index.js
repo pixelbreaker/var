@@ -39,7 +39,7 @@ const TileImg = styled(Img)`
   right: 0;
   top: 0;
   transition: filter 0.3s ease;
-  /* transform: translateZ(0) scale(1.05); */
+  transform: translateZ(0);
   filter: grayscale(1);
   width: 100%;
 
