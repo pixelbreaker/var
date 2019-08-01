@@ -64,7 +64,7 @@ const TileImg = styled(Img)`
 //   }
 // `
 
-const TileLabel = styled.a`
+const TileLabel = styled.div`
   display: block;
   width: 100%;
 
