@@ -49,17 +49,62 @@ const TileImg = styled(Img)`
   }
 `
 
-const TileLabel = styled.div`
-  color: #999;
-  font-size: 16px;
-  font-weight: 300;
-  margin: 10px 0;
-  transition: color 0.3s ease, transform 0.3s ease;
-  translate: translate3d(0, 0, 0);
+// const TileLabel = styled.div`
+//   color: #999;
+//   font-size: 16px;
+//   font-weight: 300;
+//   margin: 10px 0;
+//   transition: color 0.3s ease, transform 0.3s ease;
+//   translate: translate3d(0, 0, 0);
 
-  ${Tile}:hover & {
-    color: #444;
-    transform: translate3d(5px, 0, 0);
+//   ${Tile}:hover & {
+//     color: #444;
+//     transform: translate3d(5px, 0, 0);
+//   }
+// `
+
+const TileLabel = styled.a`
+  display: block;
+  width: 100%;
+
+  ${mqMedium} {
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    /* transform: translateX(-3px); */
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+`
+
+const Mover = styled.span`
+  display: block;
+  width: 100%;
+
+  ${mqMedium} {
+    display: block;
+    padding: 1px 3px;
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    transition: transform 250ms cubic-bezier(0.75, 0, 0.25, 1);
+
+    &:after {
+      background-color: #444;
+      display: block;
+      color: #fff;
+      content: attr(data-label);
+      left: 0;
+      padding: 1px 3px;
+      position: absolute;
+      top: 100%;
+      right: 0;
+    }
+
+    ${Tile}:hover & {
+      transform: translate3d(0, -100%, 0);
+    }
   }
 `
 
@@ -78,7 +123,9 @@ const IndexPage = ({ children, data }) => {
                 sizes={node.coverImage.sizes}
               />
             </TileImage>
-            <TileLabel>{node.title}</TileLabel>
+            <TileLabel>
+              <Mover data-label={node.title}>{node.title}</Mover>
+            </TileLabel>
           </Tile>
         ))}
       </Tiles>
