@@ -51,6 +51,7 @@ const Header = ({ siteTitle, links }) => (
       </Brand>
       <Filler />
       <Nav>
+        <AnchorRollover as={NavLink} to="/" label="Projects" />
         {links.map((link, index) => (
           <AnchorRollover
             as={NavLink}

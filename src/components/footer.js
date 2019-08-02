@@ -40,8 +40,7 @@ const Tel = styled.a`
 `
 
 const FooterColumn = styled.div`
-  font-family: Roboto, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.3;
 
   &.col1 {

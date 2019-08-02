@@ -45,8 +45,12 @@ const Layout = ({ children, data }) => (
           ]}
         >
           <html lang="en" />
-          <link
+          {/* <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700"
+            rel="stylesheet"
+          /> */}
+          <link
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
             rel="stylesheet"
           />
         </Helmet>
