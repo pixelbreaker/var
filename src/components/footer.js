@@ -120,10 +120,6 @@ const Footer = () => (
         label="Linkedin"
       />
       <br />
-      <AnchorRollover href="#" target="_blank" label="Behance" />
-      <br />
-      <AnchorRollover href="#" target="_blank" label="Pinterest" />
-      <br />
     </FooterColumn>
   </FooterContainer>
 )
