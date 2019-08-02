@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
-import { pageComponents, mqLarge, GRID_GUTTER } from '../constants.js'
+import { mqLarge, GRID_GUTTER } from '../constants'
+import { pageComponents } from '../contentful'
 import * as PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import React from 'react'
@@ -62,6 +63,7 @@ const propTypes = {
 
 const PageTemplate = ({ data }) => {
   const { headerImages, title, subtitle, bodyCopy, components } = data.page
+  console.log(components)
 
   return (
     <Layout>
@@ -70,7 +72,7 @@ const PageTemplate = ({ data }) => {
           {headerImages &&
             headerImages.map(props => (
               <HeaderImage>
-                <HeaderImg sizes={props.sizes} />
+                <HeaderImg fluid={props.fluid} />
               </HeaderImage>
             ))}
         </HeaderImages>
@@ -89,8 +91,10 @@ const PageTemplate = ({ data }) => {
         </IntroTextContainer>
         {components &&
           components.map((component, index) => {
-            const CurrentComponent = pageComponents[component.__typename]
-            return <CurrentComponent {...component} key={index} />
+            const { __typename, ...props } = component
+            const CurrentComponent = pageComponents[__typename]
+
+            return <CurrentComponent {...props} key={index} />
           })}
       </div>
     </Layout>
@@ -110,6 +114,30 @@ export const pageQuery = graphql`
       subtitle
       components {
         __typename
+        ... on ContentfulPageImages {
+          id
+          images {
+            fluid(maxWidth: 1800, quality: 75) {
+              ...GatsbyContentfulFluid_tracedSVG
+            }
+          }
+        }
+        ... on ContentfulPageTextColumns {
+          id
+          column1 {
+            text: column1
+          }
+          column2 {
+            md: childMarkdownRemark {
+              html
+            }
+          }
+          column3 {
+            md: childMarkdownRemark {
+              html
+            }
+          }
+        }
       }
       bodyCopy {
         childMarkdownRemark {
@@ -117,8 +145,8 @@ export const pageQuery = graphql`
         }
       }
       headerImages {
-        sizes(maxWidth: 1800, quality: 75) {
-          ...GatsbyContentfulSizes_tracedSVG
+        fluid(maxWidth: 1800, quality: 75) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
     }

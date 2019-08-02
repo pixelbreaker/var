@@ -1,22 +1,23 @@
 import React from 'react'
-import { mqLarge, mqMedium } from '../constants'
+import { mqLarge, mqMedium, GRID_GUTTER } from '../constants'
 import styled from 'styled-components'
 import AnchorRollover from './AnchorRollover'
+import { Link } from 'gatsby'
 
 const FooterContainer = styled.div`
+  border-top: #ccc 1px solid;
   display: grid;
+  grid-gap: ${GRID_GUTTER}px;
   grid-template: auto / auto;
-  grid-gap: 20px;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: #ccc 1px solid;
 
   ${mqMedium} {
     grid-template: auto / repeat(2, 1fr);
   }
 
   ${mqLarge} {
-    grid-template: auto / repeat(3, 1fr);
+    grid-template: auto / 33% repeat(2, 1fr);
   }
 
   a {
@@ -63,7 +64,8 @@ const Footer = () => (
   <FooterContainer>
     <FooterColumn className="col1">
       <AnchorRollover
-        href="https://var.studio"
+        as={Link}
+        to="/"
         label="VAR"
         style={{ textDecoration: 'none' }}
       />
