@@ -11,6 +11,9 @@ const SecondPage = () => (
       <label>
         Your email <input type="email" name="email"></input>
       </label>
+      <label>
+        Message: <textarea name="message"></textarea>
+      </label>
       <button type="submit">Submit</button>
     </form>
   </Layout>
