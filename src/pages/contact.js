@@ -12,6 +12,13 @@ const SecondPage = () => (
         Your email <input type="email" name="email"></input>
       </label>
       <label>
+        Which office
+        <select name="office[]" multiple>
+          <option value="london">London</option>
+          <option value="hk">Hong Kong</option>
+        </select>
+      </label>
+      <label>
         Message: <textarea name="message"></textarea>
       </label>
       <button type="submit">Submit</button>
