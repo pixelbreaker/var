@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 
 const SecondPage = () => (
   <Layout>
-    <form action="/thankyou" method="POST" data-netlify="true">
+    <form name="contact" action="/thankyou" method="POST" data-netlify="true">
       <label>
         Your name <input type="text" name="name"></input>
       </label>
