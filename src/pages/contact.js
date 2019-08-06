@@ -13,7 +13,7 @@ const SecondPage = () => (
       </label>
       <label>
         Which office
-        <select name="office[]" multiple>
+        <select name="office[]">
           <option value="london">London</option>
           <option value="hk">Hong Kong</option>
         </select>
