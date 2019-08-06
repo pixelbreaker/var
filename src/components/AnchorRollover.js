@@ -21,6 +21,7 @@ const Mover = styled.span`
   display: inline;
 
   ${mqMedium} {
+    backface-visibility: hidden;
     display: inline-block;
     padding: 1px 3px;
     position: relative;

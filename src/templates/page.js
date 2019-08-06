@@ -63,15 +63,14 @@ const propTypes = {
 
 const PageTemplate = ({ data }) => {
   const { headerImages, title, subtitle, bodyCopy, components } = data.page
-  console.log(components)
 
   return (
     <Layout>
       <div>
         <HeaderImages>
           {headerImages &&
-            headerImages.map(props => (
-              <HeaderImage>
+            headerImages.map((props, index) => (
+              <HeaderImage key={index}>
                 <HeaderImg fluid={props.fluid} />
               </HeaderImage>
             ))}
@@ -135,6 +134,14 @@ export const pageQuery = graphql`
           column3 {
             md: childMarkdownRemark {
               html
+            }
+          }
+        }
+        ... on ContentfulPageImageGrid {
+          id
+          images {
+            fluid(maxWidth: 800, quality: 75) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }

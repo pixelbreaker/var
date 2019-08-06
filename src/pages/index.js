@@ -52,20 +52,6 @@ const TileImg = styled(Img)`
   }
 `
 
-// const TileLabel = styled.div`
-//   color: #999;
-//   font-size: 16px;
-//   font-weight: 300;
-//   margin: 10px 0;
-//   transition: color 0.3s ease, transform 0.3s ease;
-//   translate: translate3d(0, 0, 0);
-
-//   ${Tile}:hover & {
-//     color: #444;
-//     transform: translate3d(5px, 0, 0);
-//   }
-// `
-
 const TileLabel = styled.div`
   display: block;
   width: 100%;
