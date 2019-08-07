@@ -67,7 +67,11 @@ const PrevNextContainer = styled.div`
 `
 
 const PrevNextSeparator = styled.span`
-  margin: 0 10px 0 5px;
+  margin: 0 11px 0 5px;
+`
+
+const PrevNextLink = styled(Link)`
+  text-transform: uppercase;
 `
 
 const propTypes = {
@@ -82,6 +86,7 @@ const PageTemplate = ({ data }) => {
     bodyCopy,
     components,
     slug,
+    unlisted,
   } = data.page
 
   const neighbours = data.pages.edges.find(edge => {
@@ -121,19 +126,25 @@ const PageTemplate = ({ data }) => {
             </IntroTextContainer>
           </>
         )}
-        <PrevNextContainer>
-          {previous && (
-            <AnchorRollover
-              as={Link}
-              to={`/${previous.slug}`}
-              label="Previous"
-            />
-          )}
-          {previous && next && <PrevNextSeparator>/</PrevNextSeparator>}
-          {next && (
-            <AnchorRollover as={Link} to={`/${next.slug}`} label="Next" />
-          )}
-        </PrevNextContainer>
+        {unlisted !== true && (
+          <PrevNextContainer>
+            {previous && (
+              <AnchorRollover
+                as={PrevNextLink}
+                to={`/${previous.slug}`}
+                label="Previous"
+              />
+            )}
+            {previous && next && <PrevNextSeparator>/</PrevNextSeparator>}
+            {next && (
+              <AnchorRollover
+                as={PrevNextLink}
+                to={`/${next.slug}`}
+                label="Next"
+              />
+            )}
+          </PrevNextContainer>
+        )}
         {components &&
           components.map((component, index) => {
             const { __typename, ...props } = component
@@ -157,6 +168,7 @@ export const pageQuery = graphql`
       slug
       title
       subtitle
+      unlisted
       components {
         __typename
         ... on ContentfulPageImages {
