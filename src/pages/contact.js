@@ -9,7 +9,7 @@ function encode(data) {
 }
 
 const SecondPage = () => {
-  const [state, setState] = useState({ isValidated: false })
+  const [state, setState] = useState({ isValidated: false, office: 'london' })
 
   const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value })
