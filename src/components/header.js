@@ -1,8 +1,9 @@
 import { Link } from 'gatsby'
+import { Location } from '@reach/router'
 import { MEDIA_XLARGE } from '../constants'
+import AnchorRollover from './AnchorRollover'
 import React from 'react'
 import styled from 'styled-components'
-import AnchorRollover from './AnchorRollover'
 
 const Container = styled.div`
   margin: 20px 0;
@@ -51,15 +52,31 @@ const Header = ({ siteTitle, links }) => (
       </Brand>
       <Filler />
       <Nav>
-        <AnchorRollover as={NavLink} to="/" label="Projects" />
-        {links.map((link, index) => (
-          <AnchorRollover
-            as={NavLink}
-            to={`/${link.slug}`}
-            key={index}
-            label={link.title}
-          />
-        ))}
+        <Location>
+          {({ location: { pathname } }) => {
+            console.log(pathname)
+
+            return (
+              <>
+                <AnchorRollover
+                  as={NavLink}
+                  to="/"
+                  label="Projects"
+                  active={pathname === '/'}
+                />
+                {links.map((link, index) => (
+                  <AnchorRollover
+                    as={NavLink}
+                    to={`/${link.slug}`}
+                    key={index}
+                    label={link.title}
+                    active={pathname === `/${link.slug}`}
+                  />
+                ))}
+              </>
+            )
+          }}
+        </Location>
       </Nav>
     </Contents>
   </Container>

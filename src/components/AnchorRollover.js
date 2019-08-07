@@ -38,14 +38,18 @@ const Mover = styled.span`
       top: 100%;
     }
 
+    ${Container}.active & {
+      text-decoration: underline !important;
+    }
+
     ${Container}:hover & {
       transform: translate3d(0, -100%, 0);
     }
   }
 `
 
-const AnchorRollover = ({ label, as, ...props }) => (
-  <Container as={as} {...props}>
+const AnchorRollover = ({ label, as, active, ...props }) => (
+  <Container as={as} className={active ? 'active' : ''} {...props}>
     <Mover data-label={label}>{label}</Mover>
   </Container>
 )

@@ -108,7 +108,7 @@ const IndexPage = ({ data }) => {
                 objectPosition="50% 50%"
                 title={node.title}
                 alt={node.title}
-                sizes={node.coverImage.sizes}
+                fluid={node.coverImage.fluid}
               />
             </TileImage>
             <TileLabel>
@@ -135,8 +135,8 @@ export const pageQuery = graphql`
           slug
           title
           coverImage {
-            sizes(quality: 70) {
-              ...GatsbyContentfulSizes_tracedSVG
+            fluid(quality: 70) {
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }

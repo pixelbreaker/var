@@ -62,32 +62,43 @@ const propTypes = {
 }
 
 const PageTemplate = ({ data }) => {
-  const { headerImages, title, subtitle, bodyCopy, components } = data.page
+  const {
+    headerImages,
+    title,
+    subtitle,
+    bodyCopy,
+    components,
+    slug,
+  } = data.page
 
   return (
     <Layout>
       <div>
-        <HeaderImages>
-          {headerImages &&
-            headerImages.map((props, index) => (
-              <HeaderImage key={index}>
-                <HeaderImg fluid={props.fluid} />
-              </HeaderImage>
-            ))}
-        </HeaderImages>
-        <IntroTextContainer>
-          <IntroTextColumn>
-            <Title>{title}</Title>
-            {subtitle && <Subtitle>{subtitle}</Subtitle>}
-          </IntroTextColumn>
-          {bodyCopy && (
-            <IntroTextColumn
-              dangerouslySetInnerHTML={{
-                __html: bodyCopy.childMarkdownRemark.html,
-              }}
-            ></IntroTextColumn>
-          )}
-        </IntroTextContainer>
+        {slug !== 'inspiration' && (
+          <>
+            <HeaderImages>
+              {headerImages &&
+                headerImages.map((props, index) => (
+                  <HeaderImage key={index}>
+                    <HeaderImg fluid={props.fluid} />
+                  </HeaderImage>
+                ))}
+            </HeaderImages>
+            <IntroTextContainer>
+              <IntroTextColumn>
+                <Title>{title}</Title>
+                {subtitle && <Subtitle>{subtitle}</Subtitle>}
+              </IntroTextColumn>
+              {bodyCopy && (
+                <IntroTextColumn
+                  dangerouslySetInnerHTML={{
+                    __html: bodyCopy.childMarkdownRemark.html,
+                  }}
+                ></IntroTextColumn>
+              )}
+            </IntroTextContainer>
+          </>
+        )}
         {components &&
           components.map((component, index) => {
             const { __typename, ...props } = component
