@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { mqLarge, GRID_GUTTER } from '../constants'
 import { pageComponents } from '../contentful'
 import * as PropTypes from 'prop-types'
@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import AnchorRollover from '../components/AnchorRollover'
 
 const HeaderImages = styled.div`
   display: grid;
@@ -57,6 +58,18 @@ const Title = styled.div`
 
 const Subtitle = styled.div``
 
+const PrevNextContainer = styled.div`
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: #ccc 1px solid;
+  transform: none;
+  display: flex;
+`
+
+const PrevNextSeparator = styled.span`
+  margin: 0 10px 0 5px;
+`
+
 const propTypes = {
   data: PropTypes.object.isRequired,
 }
@@ -70,6 +83,10 @@ const PageTemplate = ({ data }) => {
     components,
     slug,
   } = data.page
+
+  const { next, previous } = data.pages.edges.find(edge => {
+    return edge.node.slug === slug
+  })
 
   return (
     <Layout>
@@ -99,6 +116,19 @@ const PageTemplate = ({ data }) => {
             </IntroTextContainer>
           </>
         )}
+        <PrevNextContainer>
+          {previous && (
+            <AnchorRollover
+              as={Link}
+              to={`/${previous.slug}`}
+              label="Previous"
+            />
+          )}
+          {previous && next && <PrevNextSeparator>/</PrevNextSeparator>}
+          {next && (
+            <AnchorRollover as={Link} to={`/${next.slug}`} label="Next" />
+          )}
+        </PrevNextContainer>
         {components &&
           components.map((component, index) => {
             const { __typename, ...props } = component
@@ -165,6 +195,22 @@ export const pageQuery = graphql`
       headerImages {
         fluid(maxWidth: 1800, quality: 75) {
           ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+    }
+    pages: allContentfulPage(
+      filter: { unlisted: { ne: true } }
+      sort: { fields: [presentedAt], order: DESC }
+    ) {
+      edges {
+        node {
+          slug
+        }
+        next {
+          slug
+        }
+        previous {
+          slug
         }
       }
     }

@@ -53,29 +53,25 @@ const Header = ({ siteTitle, links }) => (
       <Filler />
       <Nav>
         <Location>
-          {({ location: { pathname } }) => {
-            console.log(pathname)
-
-            return (
-              <>
+          {({ location: { pathname } }) => (
+            <>
+              <AnchorRollover
+                as={NavLink}
+                to="/"
+                label="Projects"
+                active={pathname === '/'}
+              />
+              {links.map((link, index) => (
                 <AnchorRollover
                   as={NavLink}
-                  to="/"
-                  label="Projects"
-                  active={pathname === '/'}
+                  to={`/${link.slug}`}
+                  key={index}
+                  label={link.title}
+                  active={pathname === `/${link.slug}`}
                 />
-                {links.map((link, index) => (
-                  <AnchorRollover
-                    as={NavLink}
-                    to={`/${link.slug}`}
-                    key={index}
-                    label={link.title}
-                    active={pathname === `/${link.slug}`}
-                  />
-                ))}
-              </>
-            )
-          }}
+              ))}
+            </>
+          )}
         </Location>
       </Nav>
     </Contents>
