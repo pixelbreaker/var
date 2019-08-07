@@ -3,6 +3,8 @@ require('dotenv').config()
 module.exports = {
   siteMetadata: {
     title: 'VAR',
+    keywords: [`design`, `branding`, `hong kong`, `london`],
+    description: 'Design studio Hong Kong / London',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

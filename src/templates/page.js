@@ -2,11 +2,12 @@ import { graphql, Link } from 'gatsby'
 import { mqLarge, GRID_GUTTER } from '../constants'
 import { pageComponents } from '../contentful'
 import * as PropTypes from 'prop-types'
+import AnchorRollover from '../components/AnchorRollover'
+import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import React from 'react'
+import SEO from '../components/SEO'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
-import AnchorRollover from '../components/AnchorRollover'
 
 const HeaderImages = styled.div`
   display: grid;
@@ -97,9 +98,14 @@ const PageTemplate = ({ data }) => {
     previous = neighbours.previous
     next = neighbours.next
   }
+  let description = title
+  if (subtitle) {
+    description += `: ${subtitle}`
+  }
 
   return (
     <Layout>
+      <SEO title={title} description={description} />
       <div>
         {slug !== 'inspiration' && (
           <>

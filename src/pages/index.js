@@ -1,10 +1,11 @@
 import { graphql } from 'gatsby'
-import { mqLarge, mqMedium, GRID_GUTTER } from '../constants'
-import React from 'react'
-import styled from 'styled-components'
-import Layout from '../components/layout'
-import Img from 'gatsby-image'
 import { Link } from 'gatsby'
+import { mqLarge, mqMedium, GRID_GUTTER } from '../constants'
+import Img from 'gatsby-image'
+import Layout from '../components/layout'
+import React from 'react'
+import SEO from '../components/SEO'
+import styled from 'styled-components'
 
 const Tiles = styled.div`
   display: grid;
@@ -99,6 +100,7 @@ const Mover = styled.span`
 const IndexPage = ({ data }) => {
   return (
     <Layout>
+      <SEO title="Projects" />
       <Tiles>
         {data.pages.edges.map(({ node }) => (
           <Tile to={`/${node.slug}`} key={node.id}>
