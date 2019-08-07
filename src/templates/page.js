@@ -84,9 +84,14 @@ const PageTemplate = ({ data }) => {
     slug,
   } = data.page
 
-  const { next, previous } = data.pages.edges.find(edge => {
+  const neighbours = data.pages.edges.find(edge => {
     return edge.node.slug === slug
   })
+  let previous, next
+  if (neighbours) {
+    previous = neighbours.previous
+    next = neighbours.next
+  }
 
   return (
     <Layout>
