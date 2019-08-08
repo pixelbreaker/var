@@ -40,6 +40,8 @@ const Nav = styled.div`
 
 const NavLink = styled(Link)`
   color: black;
+  font-size: 15px;
+  font-weight: 600;
   margin-left: 20px;
   text-transform: uppercase;
 `

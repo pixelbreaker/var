@@ -73,6 +73,8 @@ const PrevNextSeparator = styled.span`
 
 const PrevNextLink = styled(Link)`
   text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
 `
 
 const propTypes = {

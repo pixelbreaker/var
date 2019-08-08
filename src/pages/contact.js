@@ -1,6 +1,97 @@
 import React, { useState } from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../components/layout'
+import styled from 'styled-components'
+import { mqLarge, GRID_GUTTER } from '../constants'
+
+const Container = styled.div`
+  display: grid;
+  margin-top: ${GRID_GUTTER * 2}px;
+
+  ${mqLarge} {
+    grid-gap: ${GRID_GUTTER}px;
+    grid-template: auto / 33% auto;
+    margin-top: ${GRID_GUTTER * 3}px;
+  }
+`
+
+const Column = styled.div`
+  &:first-child {
+    display: none;
+
+    ${mqLarge} {
+      display: block;
+    }
+  }
+  W & blockquote {
+    background-color: #fafafa;
+    margin: 0 0 10px;
+    padding: 10px;
+  }
+`
+
+const FieldsGrid = styled.div`
+  display: grid;
+  grid-template: auto / auto;
+  padding: ${GRID_GUTTER * 2}px ${GRID_GUTTER * 2}px ${GRID_GUTTER}px 0;
+
+  ${mqLarge} {
+    grid-template: auto / repeat(2, 1fr);
+    grid-gap: ${GRID_GUTTER}px;
+  }
+`
+
+const Field = styled.label`
+  display: block;
+  width: 100%;
+`
+
+const FieldLabel = styled.div`
+  font-size: 14px;
+`
+
+const InputField = styled.input`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+`
+
+const MessageField = styled(InputField)`
+  resize: none;
+  height: 150px;
+`
+
+const FieldSelect = styled(InputField)`
+  position: relative;
+
+  select {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+  }
+
+  &:after {
+    content: attr(data-value);
+  }
+
+  &:before {
+    content: 'v';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+`
+
+const SubmitButton = styled.button`
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+`
 
 function encode(data) {
   return Object.keys(data)
@@ -9,7 +100,7 @@ function encode(data) {
 }
 
 const SecondPage = () => {
-  const [state, setState] = useState({ isValidated: false, office: 'london' })
+  const [state, setState] = useState({ isValidated: false, office: 'London' })
 
   const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value })
@@ -32,53 +123,71 @@ const SecondPage = () => {
 
   return (
     <Layout>
-      <form
-        name="contact"
-        action="/thank-you"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        onSubmit={handleSubmit}
-      >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        <input type="hidden" name="form-name" value="contact" />
-        <div hidden>
-          <label>
-            Don’t fill this out:{' '}
-            <input name="bot-field" onChange={handleChange} />
-          </label>
-        </div>
-        <label>
-          Your name{' '}
-          <input
-            type="text"
-            name="name"
-            required
-            onChange={handleChange}
-          ></input>
-        </label>
-        <label>
-          Your email{' '}
-          <input
-            type="email"
-            name="email"
-            required
-            onChange={handleChange}
-          ></input>
-        </label>
-        <label>
-          Which office
-          <select name="office" onChange={handleChange}>
-            <option value="london">London</option>
-            <option value="hk">Hong Kong</option>
-          </select>
-        </label>
-        <label>
-          Message:{' '}
-          <textarea name="message" required onChange={handleChange}></textarea>
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <Container>
+        <Column></Column>
+        <Column>
+          We are VAR, an independent design studio. We believe that the best
+          design solutions are born after careful consideration of our clients’
+          strategic business objectives and a deep understanding of their
+          customers’ behaviour.
+          <form
+            name="contact"
+            action="/thank-you"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+          >
+            {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
+            <input type="hidden" name="form-name" value="contact" />
+            <div hidden>
+              <label>
+                Don’t fill this out:{' '}
+                <input name="bot-field" onChange={handleChange} />
+              </label>
+            </div>
+            <FieldsGrid>
+              <Field>
+                <FieldLabel>Name</FieldLabel>
+                <InputField
+                  type="text"
+                  name="name"
+                  required
+                  onChange={handleChange}
+                ></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Email</FieldLabel>
+                <InputField
+                  type="email"
+                  name="email"
+                  required
+                  onChange={handleChange}
+                ></InputField>
+              </Field>
+              <Field>
+                <FieldLabel>Office</FieldLabel>
+                <FieldSelect as="div" data-value={state.office}>
+                  <select name="office" onChange={handleChange}>
+                    <option value="London">London</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                  </select>
+                </FieldSelect>
+              </Field>
+            </FieldsGrid>
+            <Field>
+              <FieldLabel>Message</FieldLabel>
+              <MessageField
+                as="textarea"
+                name="message"
+                required
+                onChange={handleChange}
+              ></MessageField>
+            </Field>
+            <SubmitButton type="submit">Submit</SubmitButton>
+          </form>
+        </Column>
+      </Container>
     </Layout>
   )
 }
