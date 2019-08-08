@@ -196,6 +196,10 @@ html {
 *:after {
   box-sizing: inherit;
 }
+textarea:focus,
+input:focus {
+  outline: none;
+}
 body {
   color: hsla(0, 0%, 0%, 0.8);
   font-family: 'Source Sans Pro', Helvetica, sans-serif;

@@ -81,7 +81,7 @@ const FieldSelect = styled(InputField)`
     position: absolute;
     right: 20px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scaleY(0.6);
   }
 `
 
@@ -91,11 +91,51 @@ const SubmitButton = styled.button`
   cursor: pointer;
   margin-top: 12px;
   outline: none;
-  padding: 10px 20px;
+  overflow: hidden;
+  padding: 10px 30px;
+  position: relative;
   transition: background-color 0.5s ease;
+
+  &:before,
+  &:after {
+    content: '>';
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0, -50%, 0) scaleX(0.8);
+    transition: transform 300ms cubic-bezier(0.75, 0, 0, 0.75);
+  }
+
+  &:before {
+    right: 15px;
+  }
+
+  &:after {
+    left: 15px;
+    transform: translate3d(-25px, -50%, 0) scaleX(0.8);
+  }
+
+  & span {
+  }
 
   &:hover {
     background-color: #333;
+  }
+
+  &:hover:before {
+    transform: translate3d(25px, -50%, 0) scaleX(0.8);
+  }
+
+  &:hover:after {
+    transform: translate3d(0px, -50%, 0) scaleX(0.8);
+  }
+`
+
+const SubmitLabel = styled.div`
+  transform: translate3d(-3px, 0, 0);
+  transition: transform 300ms cubic-bezier(0.75, 0, 0, 0.75);
+
+  ${SubmitButton}:hover & {
+    transform: translate3d(3px, 0, 0);
   }
 `
 
@@ -190,7 +230,9 @@ const SecondPage = () => {
                 onChange={handleChange}
               ></MessageField>
             </Field>
-            <SubmitButton type="submit">Submit</SubmitButton>
+            <SubmitButton type="submit">
+              <SubmitLabel>Submit</SubmitLabel>
+            </SubmitButton>
           </form>
         </Column>
       </Container>
