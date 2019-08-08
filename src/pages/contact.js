@@ -87,46 +87,50 @@ const FieldSelect = styled(InputField)`
 
 const SubmitButton = styled.button`
   background-color: black;
+  border: none;
   color: white;
   cursor: pointer;
   margin-top: 12px;
   outline: none;
   overflow: hidden;
   padding: 10px 30px;
-  position: relative;
-  transition: background-color 0.5s ease;
 
-  &:before,
-  &:after {
-    content: '>';
-    position: absolute;
-    top: 50%;
-    transform: translate3d(0, -50%, 0) scaleX(0.8);
-    transition: transform 300ms cubic-bezier(0.75, 0, 0, 0.75);
-  }
+  ${mqLarge} {
+    position: relative;
+    transition: background-color 0.5s ease;
 
-  &:before {
-    right: 15px;
-  }
+    &:before,
+    &:after {
+      content: '>';
+      position: absolute;
+      top: 50%;
+      transform: translate3d(0, -50%, 0) scaleX(0.8);
+      transition: transform 300ms cubic-bezier(0.75, 0, 0, 0.75);
+    }
 
-  &:after {
-    left: 15px;
-    transform: translate3d(-25px, -50%, 0) scaleX(0.8);
-  }
+    &:before {
+      right: 15px;
+    }
 
-  & span {
-  }
+    &:after {
+      left: 15px;
+      transform: translate3d(-25px, -50%, 0) scaleX(0.8);
+    }
 
-  &:hover {
-    background-color: #333;
-  }
+    & span {
+    }
 
-  &:hover:before {
-    transform: translate3d(25px, -50%, 0) scaleX(0.8);
-  }
+    &:hover {
+      background-color: #333;
+    }
 
-  &:hover:after {
-    transform: translate3d(0px, -50%, 0) scaleX(0.8);
+    &:hover:before {
+      transform: translate3d(25px, -50%, 0) scaleX(0.8);
+    }
+
+    &:hover:after {
+      transform: translate3d(0px, -50%, 0) scaleX(0.8);
+    }
   }
 `
 
