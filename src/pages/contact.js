@@ -46,9 +46,7 @@ const Field = styled.label`
   width: 100%;
 `
 
-const FieldLabel = styled.div`
-  font-size: 14px;
-`
+const FieldLabel = styled.div``
 
 const InputField = styled.input`
   width: 100%;
@@ -65,12 +63,12 @@ const FieldSelect = styled(InputField)`
   position: relative;
 
   select {
-    position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
     opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
     width: 100%;
   }
 
@@ -81,16 +79,24 @@ const FieldSelect = styled(InputField)`
   &:before {
     content: 'v';
     position: absolute;
-    top: 50%;
     right: 20px;
+    top: 50%;
     transform: translateY(-50%);
   }
 `
 
 const SubmitButton = styled.button`
-  padding: 10px 20px;
   background-color: black;
   color: white;
+  cursor: pointer;
+  margin-top: 12px;
+  outline: none;
+  padding: 10px 20px;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: #333;
+  }
 `
 
 function encode(data) {
