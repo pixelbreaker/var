@@ -51,6 +51,14 @@ const IntroTextColumn = styled.div`
     margin: 0 0 10px;
     padding: 10px;
   }
+
+  &:last-child {
+    margin-top: ${GRID_GUTTER * 2}px;
+
+    ${mqLarge} {
+      margin-top: 0;
+    }
+  }
 `
 
 const Title = styled.div`

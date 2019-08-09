@@ -4,6 +4,7 @@ export const MEDIA_XLARGE = 1400
 
 export const GRID_GUTTER = 15
 
+export const mqSmall = `@media (max-width: ${MEDIA_MEDIUM - 1}px)`
 export const mqMedium = `@media (min-width: ${MEDIA_MEDIUM}px)`
 export const mqLarge = `@media (min-width: ${MEDIA_LARGE}px)`
 export const mqXLarge = `@media (min-width: ${MEDIA_XLARGE}px)`

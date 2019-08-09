@@ -117,9 +117,6 @@ const SubmitButton = styled.button`
       transform: translate3d(-25px, -50%, 0) scaleX(0.8);
     }
 
-    & span {
-    }
-
     &:hover {
       background-color: #333;
     }
