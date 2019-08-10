@@ -32,6 +32,8 @@ const Filler = styled.div`
 const Logo = styled.img`
   margin-bottom: 0 !important;
   width: 80px;
+  position: relative;
+  z-index: 101;
 `
 
 const Nav = styled.div`
