@@ -60,6 +60,11 @@ const FooterColumn = styled.div`
   }
 `
 
+const VARRollover = styled(Link)`
+  font-size: 24px;
+  transform: translateY(-4px);
+`
+
 const LondonOffice = () => (
   <>
     <strong>LONDON</strong>
@@ -122,7 +127,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterColumn className="col1">
         <AnchorRollover
-          as={Link}
+          as={VARRollover}
           to="/"
           label="VAR"
           style={{ textDecoration: 'none' }}

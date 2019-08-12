@@ -57,6 +57,7 @@ const TileImg = styled(Img)`
 const TileLabel = styled.div`
   display: block;
   width: 100%;
+  color: black;
 
   ${mqMedium} {
     overflow: hidden;
@@ -72,21 +73,22 @@ const TileLabel = styled.div`
 const Mover = styled.span`
   display: block;
   width: 100%;
+  color: black;
 
   ${mqMedium} {
     display: block;
-    padding: 1px 3px;
+    padding: 5px 3px 1px;
     position: relative;
     transform: translate3d(0, 0, 0);
     transition: transform 250ms cubic-bezier(0.75, 0, 0.25, 1);
 
     &:after {
-      background-color: #444;
+      background-color: black;
       color: #fff;
       content: attr(data-label);
       display: block;
       left: 0;
-      padding: 1px 3px;
+      padding: 5px 3px 1px;
       position: absolute;
       right: 0;
       top: -100%;
