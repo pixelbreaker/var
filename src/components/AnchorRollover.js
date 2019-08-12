@@ -29,7 +29,7 @@ const Mover = styled.span`
     transition: transform 250ms cubic-bezier(0.75, 0, 0.25, 1);
 
     &:after {
-      background-color: #444;
+      background-color: black;
       color: #fff;
       content: attr(data-label);
       left: 0;
