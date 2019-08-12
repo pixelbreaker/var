@@ -41,6 +41,7 @@ const TileImg = styled(Img)`
   right: 0;
   top: 0;
   width: 100%;
+  filter: grayscale(1);
 
   ${mqLarge} {
     filter: grayscale(1) contrast(1.6);

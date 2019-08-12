@@ -1,8 +1,8 @@
-import React from 'react'
-import { mqLarge, mqMedium, GRID_GUTTER } from '../constants'
-import styled from 'styled-components'
-import AnchorRollover from './AnchorRollover'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
+import { mqLarge, mqMedium, GRID_GUTTER } from '../constants'
+import AnchorRollover from './AnchorRollover'
+import styled from 'styled-components'
 
 const FooterContainer = styled.div`
   border-top: #ccc 1px solid;
@@ -60,70 +60,108 @@ const FooterColumn = styled.div`
   }
 `
 
-const Footer = () => (
-  <FooterContainer>
-    <FooterColumn className="col1">
-      <AnchorRollover
-        as={Link}
-        to="/"
-        label="VAR"
-        style={{ textDecoration: 'none' }}
-      />
-    </FooterColumn>
-    <FooterColumn className="col2">
-      <strong>LONDON</strong>
+const LondonOffice = () => (
+  <>
+    <strong>LONDON</strong>
+    <br />
+    <p>
+      25 Durlston Road
       <br />
-      <p>
-        25 Durlston Road
-        <br />
-        Kingston Upon Thames
-        <br />
-        Surrey
-        <br />
-        KT2 5RR
-      </p>
-      <p>
-        <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
-        <br />
-        <Tel href="tel:+440000000000">+ 44 0000 000 000</Tel>
-      </p>
-
-      <p>
-        <strong>HONG KONG</strong>
-        <br />
-        4D Tung Kin Factory Building
-        <br />
-        196-198 Tsat Tsz Mui Road
-        <br />
-        North Point
-      </p>
-      <p>
-        <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
-        <br />
-        <Tel href="tel:+85228381303">+852 2838 1303</Tel>
-      </p>
-    </FooterColumn>
-    <FooterColumn className="col3">
-      <AnchorRollover
-        href="https://www.facebook.com/varltd"
-        target="_blank"
-        label="Facebook"
-      />
+      Kingston Upon Thames
       <br />
-      <AnchorRollover
-        href="https://www.instagram.com/varltd/"
-        target="_blank"
-        label="Instagram"
-      />
+      Surrey
       <br />
-      <AnchorRollover
-        href="https://www.linkedin.com/company/var-limited/"
-        target="_blank"
-        label="Linkedin"
-      />
+      KT2 5RR
+    </p>
+    <p>
+      <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
       <br />
-    </FooterColumn>
-  </FooterContainer>
+      <Tel href="tel:+440000000000">+ 44 0000 000 000</Tel>
+    </p>
+  </>
 )
 
+const HKOffice = () => (
+  <>
+    <p>
+      <strong>HONG KONG</strong>
+      <br />
+      4D Tung Kin Factory Building
+      <br />
+      196-198 Tsat Tsz Mui Road
+      <br />
+      North Point
+    </p>
+    <p>
+      <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
+      <br />
+      <Tel href="tel:+85228381303">+852 2838 1303</Tel>
+    </p>
+  </>
+)
+
+const Footer = () => {
+  const [location, setLocation] = useState('HK')
+
+  useEffect(() => {
+    async function getLocation() {
+      const storedLoc = localStorage.getItem('location')
+      if (!storedLoc) {
+        const res = await fetch('https://ipapi.co/json/')
+        const loc = await res.json()
+        setLocation(loc.country)
+        localStorage.setItem('location', loc.country)
+        return
+      }
+      setLocation(storedLoc)
+    }
+    getLocation()
+  }, [])
+
+  return (
+    <FooterContainer>
+      <FooterColumn className="col1">
+        <AnchorRollover
+          as={Link}
+          to="/"
+          label="VAR"
+          style={{ textDecoration: 'none' }}
+        />
+      </FooterColumn>
+      <FooterColumn className="col2">
+        {location && location === 'HK' ? (
+          <>
+            <HKOffice />
+            <LondonOffice />
+          </>
+        ) : (
+          <>
+            <LondonOffice />
+            <HKOffice />
+          </>
+        )}
+      </FooterColumn>
+      <FooterColumn className="col3">
+        <AnchorRollover
+          href="https://www.facebook.com/varltd"
+          target="_blank"
+          label="Facebook"
+        />
+        <br />
+        <AnchorRollover
+          href="https://www.instagram.com/varltd/"
+          target="_blank"
+          label="Instagram"
+        />
+        <br />
+        <AnchorRollover
+          href="https://www.linkedin.com/company/var-limited/"
+          target="_blank"
+          label="Linkedin"
+        />
+        <br />
+      </FooterColumn>
+    </FooterContainer>
+  )
+}
 export default Footer
