@@ -4,7 +4,7 @@ import { MEDIA_XLARGE, mqSmall, mqMedium } from '../constants'
 import AnchorRollover from './AnchorRollover'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { HamburgerSlider } from 'react-animated-burgers'
+import { HamburgerSqueeze } from 'react-animated-burgers'
 
 const Container = styled.div`
   margin: 20px 0;
@@ -78,7 +78,7 @@ const NavLink = styled(Link)`
   }
 `
 
-const Burger = styled(HamburgerSlider)`
+const Burger = styled(HamburgerSqueeze)`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   outline: none !important;
   position: relative;
