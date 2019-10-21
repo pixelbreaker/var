@@ -41,15 +41,15 @@ const TileImg = styled(Img)`
   right: 0;
   top: 0;
   width: 100%;
-  filter: grayscale(1);
+  /* filter: grayscale(1); */
 
   ${mqLarge} {
-    filter: grayscale(1) contrast(1.6);
+    /* filter: grayscale(1) contrast(1.6); */
     transform: translateZ(0);
     transition: filter 0.3s ease;
 
     ${Tile}:hover & {
-      filter: grayscale(0) contrast(1);
+      /* filter: grayscale(0) contrast(1); */
     }
   }
 `
