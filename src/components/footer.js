@@ -81,7 +81,7 @@ const LondonOffice = () => (
     <p>
       <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
       <br />
-      <Tel href="tel:+440000000000">+ 44 0000 000 000</Tel>
+      <Tel href="tel:+447838716487">+44 (0)7838 716487</Tel>
     </p>
   </>
 )
@@ -148,23 +148,28 @@ const Footer = () => {
       </FooterColumn>
       <FooterColumn className="col3">
         <AnchorRollover
-          href="https://www.facebook.com/varltd"
+          href="https://www.facebook.com/VAR.DESIGNSTUDIO/"
           target="_blank"
           label="Facebook"
         />
         <br />
         <AnchorRollover
-          href="https://www.instagram.com/varltd/"
+          href="https://www.instagram.com/var.designstudio/"
           target="_blank"
           label="Instagram"
         />
         <br />
         <AnchorRollover
-          href="https://www.linkedin.com/company/var-limited/"
+          href="https://www.linkedin.com/company/vardesignstudio"
           target="_blank"
           label="Linkedin"
         />
         <br />
+        <AnchorRollover
+          href="https://www.behance.net/vardesignstudio"
+          target="_blank"
+          label="Behance"
+        />
       </FooterColumn>
     </FooterContainer>
   )
