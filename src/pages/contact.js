@@ -54,9 +54,14 @@ const InputField = styled.input`
   border: 1px solid #ccc;
 `
 
+const MessageContainer = styled('div')`
+  margin-right: ${GRID_GUTTER * 2}px;
+`
+
 const MessageField = styled(InputField)`
   resize: none;
   height: 150px;
+  width: 100%;
 `
 
 const FieldSelect = styled(InputField)`
@@ -173,10 +178,10 @@ const SecondPage = () => {
       <Container>
         <Column></Column>
         <Column>
-          We are VAR, an independent design studio. We believe that the best
-          design solutions are born after careful consideration of our clients’
-          strategic business objectives and a deep understanding of their
-          customers’ behaviour.
+          Let us know what you’re looking for — print, web, video, but also tell
+          us who you are and what you do. We’ll put together a plan, uniquely
+          for you. This will include matters of timing and cost, as well as the
+          scope of our work.
           <form
             name="contact"
             action="/thank-you"
@@ -222,15 +227,17 @@ const SecondPage = () => {
                 </FieldSelect>
               </Field>
             </FieldsGrid>
-            <Field>
-              <FieldLabel>Message</FieldLabel>
-              <MessageField
-                as="textarea"
-                name="message"
-                required
-                onChange={handleChange}
-              ></MessageField>
-            </Field>
+            <MessageContainer>
+              <Field>
+                <FieldLabel>Message</FieldLabel>
+                <MessageField
+                  as="textarea"
+                  name="message"
+                  required
+                  onChange={handleChange}
+                ></MessageField>
+              </Field>
+            </MessageContainer>
             <SubmitButton type="submit">
               <SubmitLabel>Submit</SubmitLabel>
             </SubmitButton>
