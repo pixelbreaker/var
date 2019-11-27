@@ -44,7 +44,7 @@ const Nav = styled.div`
 const NavContainer = styled.div`
   ${mqSmall} {
     display: ${props => (props.isActive ? 'block' : 'none')};
-    background-color: white;
+    background-color: #f9f9f9;
     bottom: 0;
     position: fixed;
     left: 0;
@@ -102,7 +102,7 @@ const Header = ({ links }) => {
         <Nav>
           <Burger
             buttonWidth={28}
-            buttonColor="#fff"
+            buttonColor="#F9F9F9"
             barColor="#444"
             isActive={navOpen}
             toggleButton={() => setNavOpen(!navOpen)}
