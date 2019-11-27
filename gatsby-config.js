@@ -30,5 +30,11 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST || 'cdn.contentful.com',
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-153107815-1',
+      },
+    },
   ],
 }
