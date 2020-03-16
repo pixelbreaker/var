@@ -70,13 +70,15 @@ const LondonOffice = () => (
     <strong>LONDON</strong>
     <br />
     <p>
-      25 Durlston Road
+      2nd Floor
       <br />
-      Kingston Upon Thames
+      107 Charterhouse Street,
       <br />
-      Surrey
+      Clerkenwell,
       <br />
-      KT2 5RR
+      London,
+      <br />
+      EC1M 6HW
     </p>
     <p>
       <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
