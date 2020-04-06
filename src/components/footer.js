@@ -102,7 +102,7 @@ const HKOffice = () => (
     <p>
       <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />
       <br />
-      <Tel href="tel:+85228381303">+852 2838 1303</Tel>
+      <Tel href="tel:+85228381710">+852 2838 1710</Tel>
     </p>
   </>
 )
