@@ -8,6 +8,7 @@ import Layout from '../components/layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import styled from 'styled-components'
+import EmbedVideo from '../components/EmbedVideo'
 
 const HeaderImages = styled.div`
   display: grid;
@@ -94,6 +95,7 @@ const PageTemplate = ({ data }) => {
     headerImages,
     title,
     subtitle,
+    videoUrl,
     bodyCopy,
     components,
     slug,
@@ -127,6 +129,7 @@ const PageTemplate = ({ data }) => {
                   </HeaderImage>
                 ))}
             </HeaderImages>
+            {videoUrl && <EmbedVideo url={videoUrl} />}
             <IntroTextContainer>
               <IntroTextColumn>
                 <Title>{title}</Title>
@@ -220,6 +223,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      videoUrl
       bodyCopy {
         childMarkdownRemark {
           html
