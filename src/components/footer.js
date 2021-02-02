@@ -93,11 +93,11 @@ const HKOffice = () => (
     <p>
       <strong>HONG KONG</strong>
       <br />
-      4D Tung Kin Factory Building
+      6E, Golden Sun Centre
       <br />
-      196-198 Tsat Tsz Mui Road
+      59 Bonham Strand West
       <br />
-      North Point
+      Sheung Wan
     </p>
     <p>
       <AnchorRollover href="mailto:info@var.studio" label="info@var.studio" />

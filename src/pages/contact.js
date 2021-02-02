@@ -218,6 +218,15 @@ const SecondPage = () => {
                 ></InputField>
               </Field>
               <Field>
+                <FieldLabel>Telephone</FieldLabel>
+                <InputField
+                  type="telephone"
+                  name="telephone"
+                  required
+                  onChange={handleChange}
+                ></InputField>
+              </Field>
+              <Field>
                 <FieldLabel>Office</FieldLabel>
                 <FieldSelect as="div" data-value={state.office}>
                   <select name="office" onChange={handleChange}>
