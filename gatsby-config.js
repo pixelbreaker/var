@@ -30,10 +30,30 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST || 'cdn.contentful.com',
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: 'UA-153107815-1',
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        trackingId: 'UA-153107815-1',
+        id: 'GTM-NNW3W9Q', //'G-6PPQPT3J71',
+
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: true,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        // Defaults to null
+        defaultDataLayer: { platform: 'gatsby' },
+
+        // Specify optional GTM environment details.
+        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+        // dataLayerName: "YOUR_DATA_LAYER_NAME",
       },
     },
   ],
